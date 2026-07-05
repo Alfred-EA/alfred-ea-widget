@@ -1,86 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ALFRED-EA Performance</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
 <div class="alfred-panel">
 
-    <div class="alfred-title">PERFORMANCE ALFRED-EA</div>
+    <div class="alfred-title">
+        PERFORMANCE ALFRED-EA
+    </div>
 
     <div class="alfred-grid">
 
         <div class="alfred-box">
-            <div class="alfred-box-title">Cette semaine</div>
-            <div class="alfred-value" id="week">1.12%</div>
+            <div class="alfred-box-title">
+                Cette semaine
+            </div>
+
+            <div class="alfred-value" id="week">
+                --
+            </div>
+
         </div>
 
         <div class="alfred-box">
-            <div class="alfred-box-title">Ce mois-ci</div>
-            <div class="alfred-value" id="month">2.96%</div>
+
+            <div class="alfred-box-title">
+                Ce mois-ci
+            </div>
+
+            <div class="alfred-value" id="month">
+                --
+            </div>
+
         </div>
 
         <div class="alfred-box">
-            <div class="alfred-box-title">Depuis le début de l'année</div>
-            <div class="alfred-value" id="year">18.40%</div>
+
+            <div class="alfred-box-title">
+                Depuis le début de l'année
+            </div>
+
+            <div class="alfred-value" id="year">
+                --
+            </div>
+
         </div>
 
     </div>
 
 </div>
 
-<style>
-.alfred-panel{
-    width:100%;
-    max-width:700px;
-    margin:20px auto;
-    background:#0b0c10;
-    border:1px solid #d4af37;
-    border-radius:14px;
-    padding:20px;
-    box-shadow:0 0 15px rgba(212,175,55,.15);
-    text-align:center;
-    box-sizing:border-box;
-}
+<script src="script.js"></script>
 
-.alfred-title{
-    color:#d4af37;
-    font-size:20px;
-    font-weight:700;
-    letter-spacing:2px;
-    margin-bottom:20px;
-}
-
-.alfred-grid{
-    display:flex;
-    gap:12px;
-}
-
-.alfred-box{
-    flex:1;
-    background:rgba(255,255,255,.03);
-    border-radius:10px;
-    padding:15px 10px;
-}
-
-.alfred-box-title{
-    font-size:12px;
-    color:#aaa;
-    margin-bottom:8px;
-}
-
-.alfred-value{
-    font-size:24px;
-    font-weight:bold;
-    color:#d4af37;
-}
-</style>
-
-<script>
-const weeklyReturn = 0.0112;
-const monthlyReturn = 0.0296;
-const yearlyReturn = 0.1840;
-
-document.getElementById("week").innerText =
-(weeklyReturn*100).toFixed(2)+"%";
-
-document.getElementById("month").innerText =
-(monthlyReturn*100).toFixed(2)+"%";
-
-document.getElementById("year").innerText =
-(yearlyReturn*100).toFixed(2)+"%";
-</script>
+</body>
+</html>
