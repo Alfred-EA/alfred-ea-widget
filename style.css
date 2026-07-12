@@ -1,44 +1,104 @@
-.alfred-panel{
-    width:100%;
-    max-width:700px;
+body{
+    margin:0;
+    background:#05060a;
+    font-family:Arial,sans-serif;
+    color:white;
+}
+
+.dashboard{
+    max-width:850px;
     margin:20px auto;
-    background:#0b0c10;
+    background:#0d1017;
     border:1px solid #d4af37;
-    border-radius:14px;
-    padding:20px;
-    box-shadow:0 0 15px rgba(212,175,55,.15);
-    text-align:center;
-    box-sizing:border-box;
+    border-radius:18px;
+    padding:25px;
+    box-shadow:0 0 25px rgba(212,175,55,.15);
 }
 
-.alfred-title{
-    color:#d4af37;
-    font-size:20px;
-    font-weight:700;
-    letter-spacing:2px;
-    margin-bottom:20px;
-}
-
-.alfred-grid{
+.header{
     display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:bold;
+    color:#d4af37;
+}
+
+.live{
+    color:#00ff88;
+    font-weight:bold;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:12px;
+    margin-bottom:25px;
+}
+
+.stat{
+    background:#131722;
+    border-radius:12px;
+    padding:12px;
+    text-align:center;
+}
+
+.stat span{
+    display:block;
+    color:#999;
+    font-size:12px;
+}
+
+.stat strong{
+    color:#d4af37;
+    font-size:22px;
+}
+
+.chart-container{
+    height:320px;
+    margin-bottom:25px;
+}
+
+.bottom-stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
     gap:12px;
 }
 
-.alfred-box{
-    flex:1;
-    background:rgba(255,255,255,.03);
-    border-radius:10px;
-    padding:15px 10px;
+.box{
+    background:#131722;
+    padding:12px;
+    border-radius:12px;
+    text-align:center;
 }
 
-.alfred-box-title{
+.box span{
+    display:block;
+    color:#999;
     font-size:12px;
-    color:#aaa;
-    margin-bottom:8px;
 }
 
-.alfred-value{
-    font-size:24px;
-    font-weight:bold;
-    color:#d4af37;
+.box strong{
+    color:#fff;
+    font-size:20px;
+}
+
+@media(max-width:768px){
+
+.stats{
+    grid-template-columns:1fr 1fr;
+}
+
+.bottom-stats{
+    grid-template-columns:1fr 1fr;
+}
+
+.logo{
+    font-size:22px;
+}
+
 }
