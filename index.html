@@ -1,60 +1,85 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ALFRED-EA Performance</title>
+<title>ALFRED-EA Dashboard</title>
 
 <link rel="stylesheet" href="style.css">
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
 
-<div class="alfred-panel">
+<div class="dashboard">
 
-    <div class="alfred-title">
-        PERFORMANCE ALFRED-EA
+    <div class="header">
+
+        <div class="logo">
+            🎩 ALFRED-EA
+        </div>
+
+        <div class="live">
+            ● LIVE
+        </div>
+
     </div>
 
-    <div class="alfred-grid">
+    <div class="stats">
 
-        <div class="alfred-box">
-            <div class="alfred-box-title">
-                Cette semaine
-            </div>
-
-            <div class="alfred-value" id="week">
-                --
-            </div>
-
+        <div class="stat">
+            <span>Aujourd'hui</span>
+            <strong id="today">0.00%</strong>
         </div>
 
-        <div class="alfred-box">
-
-            <div class="alfred-box-title">
-                Ce mois-ci
-            </div>
-
-            <div class="alfred-value" id="month">
-                --
-            </div>
-
+        <div class="stat">
+            <span>Cette semaine</span>
+            <strong id="week">0.00%</strong>
         </div>
 
-        <div class="alfred-box">
+        <div class="stat">
+            <span>Ce mois</span>
+            <strong id="month">0.00%</strong>
+        </div>
 
-            <div class="alfred-box-title">
-                Depuis le début de l'année
-            </div>
+        <div class="stat">
+            <span>Cette année</span>
+            <strong id="year">0.00%</strong>
+        </div>
 
-            <div class="alfred-value" id="year">
-                --
-            </div>
+        <div class="stat">
+            <span>Depuis le début</span>
+            <strong id="total">0.00%</strong>
+        </div>
 
+    </div>
+
+    <div class="chart-container">
+        <canvas id="growthChart"></canvas>
+    </div>
+
+    <div class="bottom-stats">
+
+        <div class="box">
+            <span>Balance</span>
+            <strong id="balance">$0</strong>
+        </div>
+
+        <div class="box">
+            <span>Equity</span>
+            <strong id="equity">$0</strong>
+        </div>
+
+        <div class="box">
+            <span>Profit</span>
+            <strong id="profit">$0</strong>
+        </div>
+
+        <div class="box">
+            <span>Drawdown</span>
+            <strong id="drawdown">0%</strong>
         </div>
 
     </div>
