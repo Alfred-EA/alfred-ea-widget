@@ -1,92 +1,164 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>ALFRED-EA Dashboard</title>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" href="style.css">
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
 
 <body>
 
 <div class="dashboard">
 
-    <div class="header">
+    <!-- HEADER -->
 
-        <div class="logo">
-            🎩 ALFRED-EA
+    <header class="header">
+
+        <div class="brand">
+
+            <img src="assets/logo.png" class="logo">
+
+            <div>
+
+                <h1>ALFRED-EA</h1>
+
+                <span>Performance vérifiée</span>
+
+            </div>
+
         </div>
 
         <div class="live">
-            ● LIVE
+
+            <span class="dot"></span>
+
+            LIVE
+
         </div>
 
-    </div>
+    </header>
 
-    <div class="stats">
+    <!-- PERFORMANCE -->
 
-        <div class="stat">
+    <section class="performance">
+
+        <div class="card">
+
             <span>Aujourd'hui</span>
-            <strong id="today">0.00%</strong>
+
+            <h2 id="today">0.00%</h2>
+
         </div>
 
-        <div class="stat">
+        <div class="card">
+
             <span>Cette semaine</span>
-            <strong id="week">0.00%</strong>
+
+            <h2 id="week">0.00%</h2>
+
         </div>
 
-        <div class="stat">
+        <div class="card">
+
             <span>Ce mois</span>
-            <strong id="month">0.00%</strong>
+
+            <h2 id="month">0.00%</h2>
+
         </div>
 
-        <div class="stat">
+        <div class="card">
+
             <span>Cette année</span>
-            <strong id="year">0.00%</strong>
+
+            <h2 id="year">0.00%</h2>
+
+        </div>
+
+        <div class="card gold">
+
+            <span>Depuis la création</span>
+
+            <h2 id="alltime">0.00%</h2>
+
+        </div>
+
+    </section>
+
+    <!-- GRAPHIQUE -->
+
+    <section class="chart-card">
+
+        <canvas id="performanceChart"></canvas>
+
+    </section>
+
+    <!-- STATISTIQUES -->
+
+    <section class="stats">
+
+        <div class="stat">
+
+            <small>Balance</small>
+
+            <strong id="balance">$0</strong>
+
         </div>
 
         <div class="stat">
-            <span>Depuis le début</span>
-            <strong id="total">0.00%</strong>
-        </div>
 
-    </div>
+            <small>Equity</small>
 
-    <div class="chart-container">
-        <canvas id="growthChart"></canvas>
-    </div>
-
-    <div class="bottom-stats">
-
-        <div class="box">
-            <span>Balance</span>
-            <strong id="balance">$0</strong>
-        </div>
-
-        <div class="box">
-            <span>Equity</span>
             <strong id="equity">$0</strong>
+
         </div>
 
-        <div class="box">
-            <span>Profit</span>
+        <div class="stat">
+
+            <small>Profit</small>
+
             <strong id="profit">$0</strong>
+
         </div>
 
-        <div class="box">
-            <span>Drawdown</span>
+        <div class="stat">
+
+            <small>Drawdown</small>
+
             <strong id="drawdown">0%</strong>
+
         </div>
 
-    </div>
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <span id="updated">
+
+            Dernière mise à jour : --
+
+        </span>
+
+    </footer>
 
 </div>
 
 <script src="script.js"></script>
 
 </body>
+
 </html>
