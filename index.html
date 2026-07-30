@@ -1,169 +1,125 @@
-<!DOCTYPE html>
-<html lang="fr">
-
+<!doctype html>
+<html lang="en">
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>ALFRED-EA Dashboard</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="style.css">
-
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#070706">
+  <meta name="description" content="ALFRED-EA live, independently published trading performance.">
+  <title>ALFRED-EA — Live Performance</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
-<div class="dashboard">
-
-    <!-- HEADER -->
-
-    <header class="header">
-
-        <div class="brand">
-
-            <img src="logo.png" class="logo">
-
-            <div>
-
-                <h1>ALFRED-EA</h1>
-
-                <span>Performance vérifiée</span>
-
-            </div>
-
-        </div>
-
-        <div class="live">
-
-            <span class="dot"></span>
-
-            LIVE
-
-        </div>
-
+  <main class="shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="ALFRED-EA home">
+        <span class="brand-mark">A</span>
+        <span>
+          <strong>ALFRED-EA</strong>
+          <small>Automated gold strategy</small>
+        </span>
+      </a>
+      <span class="live-pill"><i></i> Live account</span>
     </header>
 
-    <!-- PERFORMANCE -->
-
-    <section class="performance">
-
-        <div class="card">
-
-            <span>Aujourd'hui</span>
-
-            <h2 id="today">0.00%</h2>
-
-        </div>
-
-        <div class="card">
-
-            <span>Cette semaine</span>
-
-            <h2 id="week">0.00%</h2>
-
-        </div>
-
-        <div class="card">
-
-            <span>Ce mois</span>
-
-            <h2 id="month">0.00%</h2>
-
-        </div>
-
-        <div class="card">
-
-            <span>Cette année</span>
-
-            <h2 id="year">0.00%</h2>
-
-        </div>
-
-        <div class="card gold">
-
-            <span>Depuis la création</span>
-
-            <h2 id="alltime">0.00%</h2>
-
-        </div>
-
+    <section class="hero">
+      <div class="eyebrow">FX Blue published performance</div>
+      <h1>Performance built<br><span>to be transparent.</span></h1>
+      <p>Live account figures, updated automatically from the connected MT5 account.</p>
+      <div class="hero-actions">
+        <a class="button primary" href="#performance">View performance</a>
+        <a class="button secondary" href="https://www.fxblue.com/users/CQIPKZ" target="_blank" rel="noopener">FX Blue profile ↗</a>
+      </div>
     </section>
 
-    <!-- GRAPHIQUE -->
+    <section class="panel" id="performance">
+      <div class="panel-heading">
+        <div>
+          <span class="section-label">Performance</span>
+          <h2>Live account snapshot</h2>
+        </div>
+        <span class="verified">✓ Published</span>
+      </div>
 
-    <section class="chart-card">
+      <div class="headline-stat">
+        <span>Total banked growth</span>
+        <strong id="alltime">0.00%</strong>
+        <small>Since account inception</small>
+      </div>
 
+      <div class="period-grid">
+        <article class="metric">
+          <span>Today closed</span>
+          <strong id="today">0.00%</strong>
+        </article>
+        <article class="metric">
+          <span>This week</span>
+          <strong id="week">0.00%</strong>
+        </article>
+        <article class="metric">
+          <span>This month</span>
+          <strong id="month">0.00%</strong>
+        </article>
+        <article class="metric">
+          <span>This year</span>
+          <strong id="year">N/A</strong>
+        </article>
+      </div>
+
+      <div class="account-grid">
+        <article>
+          <span>Balance</span>
+          <strong id="balance">$0.00</strong>
+        </article>
+        <article>
+          <span>Equity</span>
+          <strong id="equity">$0.00</strong>
+        </article>
+        <article>
+          <span>Open P/L</span>
+          <strong id="openProfit">$0.00</strong>
+        </article>
+        <article>
+          <span>Closed profit</span>
+          <strong id="profit">$0.00</strong>
+        </article>
+        <article>
+          <span>Max drawdown</span>
+          <strong id="drawdown">0.00%</strong>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel chart-panel">
+      <div class="panel-heading">
+        <div>
+          <span class="section-label">Track record</span>
+          <h2>Cumulative profit</h2>
+        </div>
+      </div>
+      <div class="chart-frame">
         <iframe
-    src="https://www.fxblue.com/fxbluechart.aspx?c=ch_cumulativeprofit&id=CQIPKZ"
-    frameborder="0"
-    width="100%"
-    height="260"
-    title="FX Blue cumulative profit">
-</iframe>
-
+          src="https://www.fxblue.com/fxbluechart.aspx?c=ch_cumulativeprofit&id=CQIPKZ"
+          title="FX Blue cumulative profit chart"
+          loading="lazy">
+        </iframe>
+      </div>
     </section>
 
-    <!-- STATISTIQUES -->
-
-    <section class="stats">
-
-        <div class="stat">
-
-            <small>Balance</small>
-
-            <strong id="balance">$0</strong>
-
-        </div>
-
-        <div class="stat">
-
-            <small>Equity</small>
-
-            <strong id="equity">$0</strong>
-
-        </div>
-
-        <div class="stat">
-
-            <small>Profit</small>
-
-            <strong id="profit">$0</strong>
-
-        </div>
-
-        <div class="stat">
-
-            <small>Drawdown</small>
-
-            <strong id="drawdown">0%</strong>
-
-        </div>
-
-    </section>
-
-    <!-- FOOTER -->
+    <aside class="risk-note">
+      <strong>Trading involves risk.</strong>
+      Past performance does not guarantee future results. Balance reflects closed trades; equity also includes open positions.
+    </aside>
 
     <footer>
-
-        <span id="updated">
-
-            Dernière mise à jour : --
-
-        </span>
-
+      <span id="updated">Connecting to FX Blue…</span>
+      <span>ALFRED-EA · MT5</span>
     </footer>
+  </main>
 
-</div>
-<script src="https://www.fxblue.com/users/CQIPKZ/overviewscript"></script>
-<script src="script.js"></script>
-
+  <script src="https://www.fxblue.com/users/CQIPKZ/overviewscript"></script>
+  <script src="script.js"></script>
 </body>
-
 </html>
