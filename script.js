@@ -1,58 +1,55 @@
-fetch("data.json")
-.then(res => res.json())
-.then(data => {
+(() => {
+    const accounts = document.MTIntelligenceAccounts;
+    const account = accounts && accounts[0];
 
-document.getElementById("today").innerText = data.today;
-document.getElementById("week").innerText = data.week;
-document.getElementById("month").innerText = data.month;
-document.getElementById("year").innerText = data.year;
-document.getElementById("alltime").innerText = data.total;
+    if (!account) {
+        document.getElementById("updated").innerText =
+            "FX Blue data unavailable";
+        return;
+    }
 
-document.getElementById("balance").innerText = data.balance;
-document.getElementById("equity").innerText = data.equity;
-document.getElementById("profit").innerText = data.profit;
-document.getElementById("drawdown").innerText = data.drawdown;
+    const percentage = value => {
+        const number = Number(value);
+        const sign = number > 0 ? "+" : "";
+        return `${sign}${number.toFixed(2)}%`;
+    };
 
-new Chart(document.getElementById("performanceChart"), {
+    const money = value =>
+        new Intl.NumberFormat("en-US", {
+            style: "currency",
+            currency: "USD"
+        }).format(Number(value));
 
-type:"line",
+    document.getElementById("today").innerText =
+        percentage(account.dailyBankedGrowth);
 
-data:{
-labels:["Sep","Oct","Nov","Déc","Jan","Fév","Mar","Avr","Mai","Juin","Juil","Août"],
+    document.getElementById("week").innerText =
+        percentage(account.weeklyBankedGrowth);
 
-datasets:[{
-data:data.chart,
-borderColor:"#d4af37",
-borderWidth:3,
-tension:.4,
-fill:false
-}]
-},
+    document.getElementById("month").innerText =
+        percentage(account.monthlyBankedGrowth);
 
-options:{
-responsive:true,
-maintainAspectRatio:false,
+    // FX Blue's headline script does not provide yearly growth.
+    document.getElementById("year").innerText = "N/A";
 
-plugins:{
-legend:{
-display:false
-}
-},
+    document.getElementById("alltime").innerText =
+        percentage(account.totalBankedGrowth);
 
-scales:{
-x:{
-ticks:{
-color:"#888"
-}
-},
-y:{
-ticks:{
-color:"#888"
-}
-}
-}
-}
+    document.getElementById("balance").innerText =
+        money(account.balance);
 
-});
+    document.getElementById("equity").innerText =
+        money(account.equity);
 
-});
+    document.getElementById("profit").innerText =
+        money(account.closedProfit);
+
+    const drawdown = document.getElementById("drawdown");
+    if (drawdown) {
+        drawdown.innerText =
+            percentage(account.deepestValleyPercent);
+    }
+
+    document.getElementById("updated").innerText =
+        `Dernière mise à jour : ${new Date().toLocaleString()}`;
+})();
