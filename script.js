@@ -13,7 +13,7 @@ document.getElementById("equity").innerText = data.equity;
 document.getElementById("profit").innerText = data.profit;
 document.getElementById("drawdown").innerText = data.drawdown;
 
-new Chart(document.getElementById("growthChart"),{
+new Chart(document.getElementById("performanceChart"), {
 
 type:"line",
 
