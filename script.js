@@ -6,7 +6,7 @@ document.getElementById("today").innerText = data.today;
 document.getElementById("week").innerText = data.week;
 document.getElementById("month").innerText = data.month;
 document.getElementById("year").innerText = data.year;
-document.getElementById("alltime").innerText = data.total;;
+document.getElementById("alltime").innerText = data.total;
 
 document.getElementById("balance").innerText = data.balance;
 document.getElementById("equity").innerText = data.equity;
