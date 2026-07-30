@@ -1,55 +1,53 @@
 (() => {
-    const accounts = document.MTIntelligenceAccounts;
-    const account = accounts && accounts[0];
+  const account = document.MTIntelligenceAccounts?.[0];
+  const updated = document.getElementById("updated");
 
-    if (!account) {
-        document.getElementById("updated").innerText =
-            "FX Blue data unavailable";
-        return;
+  if (!account) {
+    updated.textContent = "FX Blue data is temporarily unavailable";
+    return;
+  }
+
+  const percentage = value => {
+    const number = Number(value);
+    if (!Number.isFinite(number)) return "N/A";
+    return `${number > 0 ? "+" : ""}${number.toFixed(2)}%`;
+  };
+
+  const money = value => {
+    const number = Number(value);
+    if (!Number.isFinite(number)) return "N/A";
+    return new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD"
+    }).format(number);
+  };
+
+  const setValue = (id, value, colorize = false) => {
+    const element = document.getElementById(id);
+    if (!element) return;
+    element.textContent = value;
+    if (colorize) {
+      const number = Number(String(value).replace(/[^0-9.-]/g, ""));
+      element.classList.toggle("positive", number > 0);
+      element.classList.toggle("negative", number < 0);
     }
+  };
 
-    const percentage = value => {
-        const number = Number(value);
-        const sign = number > 0 ? "+" : "";
-        return `${sign}${number.toFixed(2)}%`;
-    };
+  setValue("today", percentage(account.dailyBankedGrowth), true);
+  setValue("week", percentage(account.weeklyBankedGrowth), true);
+  setValue("month", percentage(account.monthlyBankedGrowth), true);
+  setValue("year", "N/A");
+  setValue("alltime", percentage(account.totalBankedGrowth), true);
 
-    const money = value =>
-        new Intl.NumberFormat("en-US", {
-            style: "currency",
-            currency: "USD"
-        }).format(Number(value));
+  const balance = Number(account.balance);
+  const equity = Number(account.equity);
+  const openProfit = equity - balance;
 
-    document.getElementById("today").innerText =
-        percentage(account.dailyBankedGrowth);
+  setValue("balance", money(balance));
+  setValue("equity", money(equity));
+  setValue("openProfit", money(openProfit), true);
+  setValue("profit", money(account.closedProfit), true);
+  setValue("drawdown", percentage(-Math.abs(Number(account.deepestValleyPercent))), true);
 
-    document.getElementById("week").innerText =
-        percentage(account.weeklyBankedGrowth);
-
-    document.getElementById("month").innerText =
-        percentage(account.monthlyBankedGrowth);
-
-    // FX Blue's headline script does not provide yearly growth.
-    document.getElementById("year").innerText = "N/A";
-
-    document.getElementById("alltime").innerText =
-        percentage(account.totalBankedGrowth);
-
-    document.getElementById("balance").innerText =
-        money(account.balance);
-
-    document.getElementById("equity").innerText =
-        money(account.equity);
-
-    document.getElementById("profit").innerText =
-        money(account.closedProfit);
-
-    const drawdown = document.getElementById("drawdown");
-    if (drawdown) {
-        drawdown.innerText =
-            percentage(account.deepestValleyPercent);
-    }
-
-    document.getElementById("updated").innerText =
-        `Dernière mise à jour : ${new Date().toLocaleString()}`;
+  updated.textContent = `Last refreshed ${new Date().toLocaleString()}`;
 })();
